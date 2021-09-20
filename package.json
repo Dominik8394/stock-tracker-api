@@ -1,0 +1,27 @@
+{
+    "name": "portfolio-tracker-api",
+    "version": "1.0.0",
+    "description": "Backend for portfolio tracker",
+    "main": "app.js",
+    "scripts": {
+        "dev": "cross-env NODE_ENV=development nodemon app",
+        "start": "cross-env NODE_ENV=development node app",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@okta/oidc-middleware": "^4.1.0",
+        "@okta/okta-sdk-nodejs": "^4.6.0",
+        "connect-mongo": "^3.2.0",
+        "cors": "^2.8.5",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "express-session": "^1.17.2",
+        "mongoose": "^5.11.15"
+    },
+    "devDependencies": {
+        "cross-env": "^7.0.3",
+        "nodemon": "^2.0.7"
+    }
+}
