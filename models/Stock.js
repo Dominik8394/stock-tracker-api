@@ -5,7 +5,7 @@ const StockSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    title: {
+    name: {
         type: String,
         required: true
     },
@@ -17,11 +17,11 @@ const StockSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    cost: {
+    transaction: {
         type: Number,
         required: true
     },
-    fee: {
+    price: {
         type: Number,
         required: true
     },
