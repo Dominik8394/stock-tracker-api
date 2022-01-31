@@ -3,6 +3,9 @@
     "version": "1.0.0",
     "description": "Backend for portfolio tracker",
     "main": "app.js",
+    "engines": {
+        "node": "16.x"
+    },
     "scripts": {
         "dev": "cross-env NODE_ENV=development nodemon app",
         "start": "cross-env NODE_ENV=development node app",
