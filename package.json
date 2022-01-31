@@ -8,7 +8,7 @@
     },
     "scripts": {
         "dev": "cross-env NODE_ENV=development nodemon app",
-        "start": "cross-env NODE_ENV=development node app",
+        "start": "node app",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "",
