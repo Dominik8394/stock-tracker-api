@@ -20,6 +20,9 @@ router.get('/api/stocks', async (req, res) => {
         res.json(stocks);
     } catch (error) {
         console.log(error);
+        res.render('error', {
+            message: error
+        });
         res.status(500).send('Sorry something went wrong: ' + error);
     }
 });
@@ -38,6 +41,9 @@ router.get('/api/stocks/:user', async (req, res) => {
         res.json(stocks);
     } catch (error) {
         console.log(error);
+        res.render('error', {
+            message: error
+        });
         res.status(500).send('Sorry something went wrong: ' + error);
     }
 });
