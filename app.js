@@ -29,7 +29,7 @@ app.use(cors(corsOptions));
 // Body parser
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json());
-app.use('view engine', 'pug');
+// app.use('view engine', 'pug');
 /**
  * Place routes below this comment
  */
