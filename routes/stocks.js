@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const { getStocksByUser, deleteStocksByUser, createStock } = require('../controller/StockController');
+
 const Stock = require('../models/Stock');
 
 router.use(function (req, res, next) {
@@ -13,78 +15,28 @@ router.use(function (req, res, next) {
     next();
 });
 
-/**
- * @desc        Retrieve portfolio data from database
- * @route       /api/stocks
- */
-router.get('/api/stocks', async (req, res) => {
-    try {
-        const stocks = await Stock.find({})
-            .lean()
-        res.json(stocks);
-    } catch (error) {
-        console.log(error);
-        res.render('error', {
-            message: error
-        });
-        res.status(500).send('Sorry something went wrong: ' + error);
-    }
-});
+// router.route('/api/stocks/:user')
+//     .get(getStocksByUser)
+//     .delete(deleteStocksByUser);
 
 /**˚
  * @desc        Retrieve portfolio data from database with respect
  *              to a particular user
  * @route       /api/stocks/:user
  */
-router.get('/api/stocks/:user', async (req, res) => {
-    try {
-        console.log("Params: ", req.params.user);
-        const stocks = await Stock.find({ user: req.params.user })
-            .lean()
-            .exec();
-        res.json(stocks);
-    } catch (error) {
-        console.log(error);
-        res.render('error', {
-            message: error
-        });
-        res.status(500).send('Sorry something went wrong: ' + error);
-    }
-});
+router.get('/api/stocks/:user', getStocksByUser);
 
 /**
  * @desc        Remove all entries related to a user
  * @route       /api/stocks
  */
-router.delete('/api/stocks', async (req, res) => {
-    try {
-        Stock.deleteMany({}, (err, result) => {
-            if (err) {
-                res.send(err);
-            } else {
-                res.send(result);
-            }
-        })
-    } catch (error) {
-
-    }
-});
+router.delete('/api/stocks/:user', deleteStocksByUser);
 
 /**
  * @desc        Create a new trade in the database
  * @route       /api/stock
  */
-router.post('/api/stock', async (req, res) => {
-    try {
-        console.log(req);
-        await Stock.create(req.body.data);
-        res.status(202).send('Accepted');
-    } catch (err) {
-        console.log(err);
-        res.status(500).send('Sorry something went wrong: ' + err
-            + req.body);
-    }
-});
+router.post('/api/stock', createStock);
 
 /**
  * @descr       Provides a route for clients to check whether the server is up and running
