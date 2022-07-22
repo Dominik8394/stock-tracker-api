@@ -9,7 +9,7 @@ dotenv.config({ path: './config/config.env' });
 connectDB();
 
 const HOST = '0.0.0.0';
-const whitelist = ["http://localhost:3000"];
+const whitelist = ["http://localhost:3001", "http://localhost:3000"];
 
 const app = express();
 

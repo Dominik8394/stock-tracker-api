@@ -18,11 +18,26 @@ const getStocksByUser = async (req, res) => {
         res.json(stocks);
     } catch (error) {
         console.log("Error on request: ", error);
-       res.json({
-           message: "Server error on request",
-           status: res.status(500),
-           errorMessage: error 
-       });
+        res.json({
+            message: "Server error on request",
+            status: res.status(500),
+            errorMessage: error
+        });
+    }
+}
+
+const getStocks = async (req, res) => {
+    try {
+        const stocks = await Stock.find();
+        console.log(stocks);
+        res.json(stocks);
+    } catch (error) {
+        console.log("Error on request: ", error);
+        res.json({
+            message: "Server error on request",
+            status: res.status(500),
+            errorMessage: error
+        });
     }
 }
 
@@ -58,12 +73,12 @@ const createStock = async (req, res) => {
             message: "Missing data in request body!"
         });
     }
-    
+
     try {
         await Stock.create(req.body.data);
-        
+
         res.status(202).send('Accepted');
-        
+
     } catch (error) {
         console.log("Error on request: ", error);
         res.json({
@@ -76,6 +91,7 @@ const createStock = async (req, res) => {
 
 module.exports = {
     getStocksByUser,
+    getStocks,
     deleteStocksByUser,
     createStock
 }

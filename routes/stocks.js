@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { getStocksByUser, deleteStocksByUser, createStock } = require('../controller/StockController');
+const { getStocksByUser, deleteStocksByUser, createStock, getStocks } = require('../controller/StockController');
 
 const Stock = require('../models/Stock');
 
@@ -25,6 +25,13 @@ router.use(function (req, res, next) {
  * @route       /api/stocks/:user
  */
 router.get('/api/stocks/:user', getStocksByUser);
+
+/**
+ * @desc ...
+ * 
+ * @route ...
+ */
+router.get('/api/stocks', getStocks);
 
 /**
  * @desc        Remove all entries related to a user
