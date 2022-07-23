@@ -14,19 +14,19 @@ const StockSchema = new mongoose.Schema({
         required: true
     },
     amount: {
-        type: mongoose.Decimal128,
+        type: Number,
         required: true
     },
     transaction: {
-        type: mongoose.Decimal128,
+        type: Number,
         required: true
     },
     price: {
-        type: mongoose.Decimal128,
+        type: Number,
         required: true
     },
     totalAmount: {
-        type: mongoose.Decimal128,
+        type: Number,
         required: true
     },
     user: {
